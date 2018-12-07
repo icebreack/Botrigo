@@ -28,7 +28,7 @@ class RecursiveScraper:
 
         fields = urlsplit(response.url)._asdict()
         
-        if fields['netloc'] == self.domain:
+        #if fields['netloc'] == self.domain:
 
             soup = BeautifulSoup(response.content, 'lxml')
 
@@ -122,5 +122,5 @@ class RecursiveScraper:
                 except KeyError:
                     pass        
 
-        else:
-            print("| /!\ Out of domain")
+        #else:
+        #    print("| /!\ Out of domain")
