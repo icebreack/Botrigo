@@ -1,4 +1,54 @@
 ''' Botrigo Crawler.
+
+agent
+-mobile
+-all browsers
+
+print
+((
+>>> import imgkit
+>>> imgkit.from_url('https://google.com','out.jpg')
+))
+
+json output (everything)
+
+UUID: (full address SHA256)
+page:
+http_code:
+time:
+headers:
+files: (and the http response code for all files)
+
+{
+    UUID:[
+        "page": "https://XXX.com/",
+        "http_code": 200,
+        "1st_byte": 2.151707,
+        "headers":[
+            "x-frame-options": "ok",
+            "strict-transport-security": "ok",
+            "access-control-allow-origin": "ok",
+            "content-security-policy": "ok",
+            "x-xss-protection": "ok",
+            "x-xss-protection": "ok",
+            "x-powered-by": "ok",
+            "server": "ok" 
+        ],
+        "objects":[
+            "scripts":[ 
+                "https://XXX.com/wp/wp-includes/js/jquery/jquery.js?ver=1.12.4",
+                "https://XXX.com/wp/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1"],
+            "images":[
+                "https://XXX.com/app/uploads/2016/02/XXX.jpg",
+                "https://XXX.com/app/uploads/2016/02/XXX.jpg"],
+        ],
+        "print_file":"UUID.png"
+    ]
+}
+
+
+quiet mode
+
 '''
 
 import re
@@ -186,60 +236,8 @@ if __name__ == '__main__':
     parser.add_argument("-aM", "--agent_mobile", help="Use Mobile agent", action="store_true")
     parser.add_argument("-aD", "--agent_desktop", help="Use Desktop agent", action="store_true")
     parser.add_argument("-aG", "--agent_google", help="Use fake Google agent", action="store_true")
-
-'''
-agent
--mobile
--all browsers
-
-print
-((
->>> import imgkit
->>> imgkit.from_url('https://google.com','out.jpg')
-))
-
-json output (everything)
-
-UUID: (full address SHA256)
-page:
-http_code:
-time:
-headers:
-files: (and the http response code for all files)
-
-{
-    UUID:[
-        "page": "https://XXX.com/",
-        "http_code": 200,
-        "1st_byte": 2.151707,
-        "headers":[
-            "x-frame-options": "ok",
-            "strict-transport-security": "ok",
-            "access-control-allow-origin": "ok",
-            "content-security-policy": "ok",
-            "x-xss-protection": "ok",
-            "x-xss-protection": "ok",
-            "x-powered-by": "ok",
-            "server": "ok" 
-        ],
-        "objects":[
-            "scripts":[ 
-                "https://XXX.com/wp/wp-includes/js/jquery/jquery.js?ver=1.12.4",
-                "https://XXX.com/wp/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1"],
-            "images":[
-                "https://XXX.com/app/uploads/2016/02/XXX.jpg",
-                "https://XXX.com/app/uploads/2016/02/XXX.jpg"],
-        ],
-        "print_file":"UUID.png"
-    ]
-}
-
-
-quiet mode
-
-
-
-'''
+    parser.add_argument("-p", "--print", help="Print website", action="store_true")
+    parser.add_argument("-j", "--json_output", help="Print website", action="store_true")
 
 
     args = parser.parse_args()
